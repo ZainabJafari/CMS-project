@@ -17,12 +17,14 @@ const Home = () => {
       const loadProduct = async () => {
         const result = await axios.get("http://localhost:2000/api/product")
         setProducts(result.data)
+        console.log(products);
         products.forEach(pro => {
           setProductId(pro._id)
         })
         
 
       }
+
 
       const deletProduct = async (id) => {
         try {
@@ -39,9 +41,8 @@ const Home = () => {
   return (
     <div className="container">
     <div className="py-4">
-          {products.map((item) => (
-            <div className='product-list'>
-                <p key={item._id}></p>
+          {products.map((item) => ( 
+            <div className='product-list' key={item._id}> 
                 
               <p className='product-style'>{item.productName}</p>
               <p>{item.description}</p>
@@ -53,13 +54,13 @@ const Home = () => {
             />              <p>
 
                 <Link
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   to={`/uppdate/${item._id}`}
                 >
                   Edit
                 </Link>
                 <Link
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   onClick={() => deletProduct(item._id)}
                 >
                   Delete
