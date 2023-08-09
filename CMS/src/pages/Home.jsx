@@ -1,29 +1,32 @@
 import React from 'react'
 import {Link, useParams} from 'react-router-dom'
 import axios  from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect , useContext } from 'react'
+import {ProductsContext} from '../context/productsContext'
 
 const Home = () => {
 
   const {_id} = useParams()
 
-    const [products, setProducts] = useState([])
-    const [productId, setProductId] =useState() 
+    // const [products, setProducts] = useState([])
+    // const [productId, setProductId] =useState() 
+
+    const {getData , productId , loadProduct} = useContext(ProductsContext)
 
     useEffect(() => {
         loadProduct()
       }, [])
 
-      const loadProduct = async () => {
-        const result = await axios.get("http://localhost:2000/api/product")
-        setProducts(result.data)
-        console.log(products);
-        products.forEach(pro => {
-          setProductId(pro._id)
-        })
+      // const loadProduct = async () => {
+      //   const result = await axios.get("http://localhost:2000/api/product")
+      //   setProducts(result.data)
+      //   console.log(products);
+      //   products.forEach(pro => {
+      //     setProductId(pro._id)
+      //   })
         
 
-      }
+      // }
 
 
       const deletProduct = async (id) => {
@@ -41,7 +44,7 @@ const Home = () => {
   return (
     <div className="container">
     <div className="py-4">
-          {products.map((item) => ( 
+          {getData.map((item) => ( 
             <div className='product-list' key={item._id}> 
                 
               <p className='product-style'>{item.productName}</p>
