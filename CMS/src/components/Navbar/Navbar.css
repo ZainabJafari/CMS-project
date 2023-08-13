@@ -1,0 +1,38 @@
+.navbar-text {
+    float: right;
+    color: rgb(40, 168, 168);
+    padding-right: 100px;
+}
+.navbar-text li{
+    text-decoration: none;
+}
+
+.navbar-login {
+    padding: 30px;
+}
+.title-logo{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.header{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 50px;
+    font-size: 20px;
+    text-decoration: none;
+}
+.active{
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+
+}
+li{
+    text-decoration: none;
+}
+li.nav-li{
+    text-decoration: none;
+
+}
