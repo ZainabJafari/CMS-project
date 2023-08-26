@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -10,12 +10,16 @@ const Login = () => {
 
     const schema = yup.object().shape({
       email: yup.string().email().required('The email field is required'),
-      password: yup.string().min(4).max(10).required('The password field is required')
+      password: yup.string().required('The password field is required')
     })
 
     const {handleSubmit , register , formState:{errors}} = useForm({resolver: yupResolver(schema)})
 
-    const onSubmit = () => {
+
+    // The Admins email is "zainab123@com" password "jafari"
+
+    const onSubmit = async (values) => {
+      await axios.post('http://localhost:2000/api/admin/login/admin', values)
        navigate('/products')
     }
 
